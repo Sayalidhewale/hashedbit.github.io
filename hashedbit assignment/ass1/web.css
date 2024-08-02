@@ -1,0 +1,91 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden; /* Clearfix hack */
+}
+
+header {
+    background-color: #d6355d;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header .logo {
+    float: left;
+    
+}
+
+header .social-links {
+    float: right;
+}
+
+header .social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+nav.menubar {
+    background-color: #571326;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav.menubar ul {
+    list-style-type: none;
+    text-align: right;
+}
+
+nav.menubar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav.menubar ul li a {
+    color: #beb8b8;
+    text-decoration: none;
+}
+
+.sidebar {
+    float: left;
+    width: 100%;
+    background-color: #e3a8a8;
+    padding: 30px;
+}
+
+main {
+    float: left;
+    width: 90%;
+    padding: 20px;
+}
+
+.box {
+    background-color: #bb4965;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.box img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #915f6d;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}

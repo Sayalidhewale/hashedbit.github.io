@@ -1,0 +1,27 @@
+.calculator {
+    max-width: 300px;
+    margin: 120px auto;
+    padding: 20px;
+    border: 1px solid #DABFDE;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #DABFDE;
+  }
+  
+  input[type="number"], button {
+    padding: 10px;
+    margin: 5px;
+    width: 80px;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: #FFDCF4;
+    border: 1px solid #B5B9FF;
+    border-radius: 3px;
+  }
+  
+  button:hover {
+    background-color: #DABFDE;
+  }
+  

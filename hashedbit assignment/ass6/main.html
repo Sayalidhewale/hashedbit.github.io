@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo List App</title>
+<style>
+    /* Minimal CSS for layout */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    .todo-item {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <h2>Todo List</h2>
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <button id="addTaskBtn">Add Task</button>
+
+    <div id="taskList">
+        <!-- Tasks will be added here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            
+            // Array to store tasks
+            let tasks = [];
+
+            // Function to add a new task
+            function addTask() {
+                const taskText = taskInput.value.trim();
+                if (taskText === '') {
+                    alert('Please enter a task!');
+                    return;
+                }
+
+                // Create task object
+                const task = {
+                    id: Date.now(), // Unique ID for each task (timestamp)
+                    text: taskText
+                };
+
+                // Add task to array
+                tasks.push(task);
+
+                // Clear input field
+                taskInput.value = '';
+
+                // Sort tasks by text in ascending order
+                tasks.sort((a, b) => a.text.localeCompare(b.text));
+
+                // Update the task list display
+                renderTasks();
+            }
+
+            // Function to render all tasks
+            function renderTasks() {
+                // Clear existing list
+                taskList.innerHTML = '';
+
+                // Render each task
+                tasks.forEach(task => {
+                    const taskItem = document.createElement('div');
+                    taskItem.className = 'todo-item';
+                    taskItem.innerHTML = `
+                        <span>${task.text}</span>
+                        <button class="deleteBtn" data-task-id="${task.id}">Delete</button>
+                    `;
+                    taskList.appendChild(taskItem);
+                });
+
+                // Add event listeners to delete buttons
+                const deleteBtns = document.querySelectorAll('.deleteBtn');
+                deleteBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const taskId = parseInt(btn.getAttribute('data-task-id'));
+                        deleteTask(taskId);
+                    });
+                });
+            }
+
+            // Function to delete a task
+            function deleteTask(id) {
+                tasks = tasks.filter(task => task.id !== id);
+                renderTasks();
+            }
+
+            // Event listener for add task button
+            addTaskBtn.addEventListener('click', addTask);
+
+            // Bonus: Submit on Enter key press
+            taskInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    addTask();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
